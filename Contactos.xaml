@@ -9,11 +9,26 @@
       Title="Contactos">
 
     <Grid>
-        <TextBlock Text="Página de Contactos"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   />
+        <StackPanel>
+            <TextBlock Text="Página de Contactos"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           FontSize="24"
+           FontWeight="Bold"
+           />
+            <ListBox
+        x:Name="ListaContactosInterfaz"
+        >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Apellido1, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"/>
+                            <TextBlock Text="{Binding FechaCreacion}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Page>

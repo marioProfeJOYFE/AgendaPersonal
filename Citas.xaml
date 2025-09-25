@@ -9,7 +9,8 @@
       Title="Citas">
 
     <Grid>
-        <StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+           <StackPanel>
             <TextBlock Text="Página de Citas"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
@@ -29,7 +30,46 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+            <TextBlock 
+                Text="Agregar Nueva Cita"
+                FontSize="20"
+                FontWeight="Bold"
+                Margin="0,20,10,10"
+                />
+            <TextBlock 
+                Text="Titulo"
+                FontSize="14"
+                FontWeight="Medium"
+                Margin="10,20,10,0"
+                />
+            <TextBox
+                x:Name="TxtTituloCita"
+                Margin="10,10,10,10"
+                />
+            <TextBlock 
+                Text="Descripción"
+                FontSize="14"
+                FontWeight="Medium"
+                Margin="10,20,10,0"
+            />
+            <TextBox 
+                x:Name="TxtDescripcionCita"
+                Height="100"
+                Margin="10,10,10,10"
+            />
+
+                <DatePicker 
+                x:Name="DatePickerCita"
+                Margin="10,10,10,10"
+                />
+
+                <Button 
+                Content="Agregar Cita"
+                Margin="10,20,0,0" Click="Button_Click"
+            />
+        </StackPanel> 
+        </ScrollViewer>
+        
         
     </Grid>
 </Page>
