@@ -13,7 +13,7 @@ namespace AgendaPersonal
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public string genero { get; set; }
+        public string Genero { get; set; }
 
     }
 }

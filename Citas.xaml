@@ -63,6 +63,10 @@
                 Margin="10,10,10,10"
                 />
 
+                <ComboBox
+                   x:Name="ComboGenero"
+                   />
+
                 <Button 
                 Content="Agregar Cita"
                 Margin="10,20,0,0" Click="Button_Click"

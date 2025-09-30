@@ -7,28 +7,131 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Contactos">
-
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Página de Contactos"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer 
+            VerticalScrollBarVisibility="Auto"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+        >
+            <StackPanel>
+                <TextBlock Text="Página de Contactos"
            HorizontalAlignment="Center"
            VerticalAlignment="Center"
            FontSize="24"
            FontWeight="Bold"
            />
-            <ListBox
-        x:Name="ListaContactosInterfaz"
-        >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="5">
-                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Apellido1, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"/>
-                            <TextBlock Text="{Binding FechaCreacion}" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <ListBox
+                    x:Name="ListaContactosInterfaz" 
+                    SelectionChanged="ListaContactosInterfaz_CambioUsuarioSeleccionado"
+                    >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Apellido1, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"/>
+                                <TextBlock Text="{Binding FechaCreacion}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock 
+                    Text="Agregar Nuevo Contacto"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Margin="0,20,10,10"
+                    />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel x:Name="ContNombre" Width="150">
+                        <TextBlock 
+                        Text="Nombre"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="10,20,10,0"
+                        />
+                        <TextBox
+                    x:Name="TxtNombreContacto"
+                    Margin="10,10,10,10"
+                    />
+                    </StackPanel>
+                    <StackPanel x:Name="ContApellido1" Width="150">
+                        <TextBlock 
+                        Text="Apellido 1"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="10,20,10,0"
+                        />
+                        <TextBox
+                        x:Name="TxtApellido1Contacto"
+                        Margin="10,10,10,10"
+                        />
+                    </StackPanel>
+                    <StackPanel x:Name="ContApellido2" Width="150">
+                        <TextBlock 
+                            Text="Apellido 2"
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Margin="10,20,10,0"
+                        />
+                        <TextBox
+                            x:Name="TxtApellido2Contacto"
+                            Margin="10,10,10,10"
+                        />
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock 
+                    Text="Genero"
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="10,20,10,0"
+                />
+                <ComboBox
+                    x:Name="ComboGenero"
+                    Margin="10,20,10,0"
+                />
+                <Button
+                    Style="{StaticResource  CancelarButton}"
+                    Content="Agregar Contacto"
+                    Margin="10,20,0,0" Click="Button_Click"
+                />
+            </StackPanel>
+            
+        </ScrollViewer>
+        <StackPanel
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            >
+            <TextBlock 
+                Text="Detalles del Contacto"
+                FontSize="20"
+             />
+            <TextBlock
+                x:Name="DetalleNombre"
+                Text="Nombre: "
+                FontSize="16"
+                Margin="10,20,10,0"
+            />
+            <TextBlock
+                x:Name="DetalleApellidos"
+                Text="Apellidos: "
+                FontSize="16"
+                Margin="10,20,10,0"
+            />
+            <TextBlock
+                x:Name="DetalleGenero"
+                Text="Genero: "
+                FontSize="16"
+                Margin="10,20,10,0"
+            />
+            <TextBlock
+                x:Name="DetalleFecha"
+                Text="Creado el "
+                FontSize="12"
+                Margin="10,20,10,0"
+            />
         </StackPanel>
     </Grid>
 </Page>
