@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace AgendaPersonal
+{
+    public class ContactosViewModel : INotifyPropertyChanged
+    {
+        public ObservableCollection<Contacto> Contactos { get; set; }
+
+        private Contacto _contactoSeleccionado;
+
+        //CREAR UN GETTER Y SETTER PARA CONTACTO SELECCIONADO
+        public Contacto ContactoSeleccionado
+        {
+            get => _contactoSeleccionado;
+            set
+            {
+                _contactoSeleccionado = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand AgregarContactoCommand { get; }
+
+        private void AgregarContacto(object parameter)
+        {
+            Contactos.Add(
+                new Contacto
+                {
+                    Nombre = "NuevoNombre",
+                    Apellido1 = "NuevoApellido1",
+                    Apellido2 = "NuevoApellido2",
+                    FechaCreacion = DateTime.Now,
+                    Genero = "NuevoGenero"
+                });
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string nombre = null )
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
+        }
+    }
+}
