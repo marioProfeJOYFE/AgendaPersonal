@@ -8,13 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AgendaPersonal
+namespace AgendaPersonal.MVVM
 {
     public class ContactosViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Contacto> Contactos { get; set; }
 
         private Contacto _contactoSeleccionado;
+
+
+        public ContactosViewModel()
+        {
+            Contactos = new ObservableCollection<Contacto>()
+            {
+                new Contacto { Nombre = "Ana", Apellido1 = "Lopez", Apellido2 = "Martinez", FechaCreacion = DateTime.Now, Genero = "Femenino" },
+                new Contacto { Nombre = "Luis", Apellido1 = "Garcia", Apellido2 = "Hernandez", FechaCreacion = DateTime.Now.AddDays(1), Genero = "Masculino" }
+            };
+
+            // Asignamos el comando al método AgregarContacto
+            AgregarContactoCommand = new RelayCommand(AgregarContacto);
+        }
+
 
         //CREAR UN GETTER Y SETTER PARA CONTACTO SELECCIONADO
         public Contacto ContactoSeleccionado

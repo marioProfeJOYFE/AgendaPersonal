@@ -7,6 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Contactos">
+
+    <Page.DataContext>
+        <local:ContactosViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -25,8 +30,9 @@
            FontWeight="Bold"
            />
                 <ListBox
-                    x:Name="ListaContactosInterfaz" 
-                    SelectionChanged="ListaContactosInterfaz_CambioUsuarioSeleccionado"
+                    x:Name="ListaContactosInterfaz"
+                    ItemsSource="{Binding Contactos}"
+                    SelectedItem="{Binding ContactoSeleccionado}"
                     >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -95,7 +101,8 @@
                 <Button
                     Style="{StaticResource  CancelarButton}"
                     Content="Agregar Contacto"
-                    Margin="10,20,0,0" Click="Button_Click"
+                    Margin="10,20,0,0"
+                    Command="{Binding AgregarContactoCommand}"
                 />
             </StackPanel>
             
@@ -108,12 +115,19 @@
                 Text="Detalles del Contacto"
                 FontSize="20"
              />
-            <TextBlock
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
                 x:Name="DetalleNombre"
                 Text="Nombre: "
                 FontSize="16"
                 Margin="10,20,10,0"
-            />
+                />
+                <TextBox 
+                    Text="{Binding ContactoSeleccionado.Nombre,
+                            Mode=TwoWay}"
+                   />
+            </StackPanel>
+            
             <TextBlock
                 x:Name="DetalleApellidos"
                 Text="Apellidos: "
